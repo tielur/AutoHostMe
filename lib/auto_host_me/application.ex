@@ -14,8 +14,10 @@ defmodule AutoHostMe.Application do
   def start(_type, _args) do
     {:ok, client} = ExIrc.start_link!()
     twitch_channels = String.split(System.get_env("TWITCH_CHANNELS"), ",")
+    port = Application.fetch_env!(:auto_host_me, :port)
 
     children = [
+      Plug.Adapters.Cowboy.child_spec(scheme: :http, plug: SimpleHttpServer, options: [port: port]),
       worker(ConnectionHandler, [client]),
       worker(LoginHandler, [client, twitch_channels])
     ]

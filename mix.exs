@@ -21,6 +21,8 @@ defmodule AutoHostMe.MixProject do
   defp deps do
     [
       {:exirc, "~> 1.0"},
+      {:cowboy, "~> 1.0"},
+      {:plug, "~> 1.6"},
       {:credo, "~> 0.10.1", only: [:dev, :test]}
     ]
   end
