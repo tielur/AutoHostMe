@@ -4,7 +4,7 @@ defmodule SimpleHttpServer do
 
   def call(conn, options) do
     conn
-    |> super(opts) # using super in order to still call the plug chain
+    |> super(options) # using super in order to still call the plug chain
     |> Plug.Conn.send_resp(200, "I'm running!")
   end
 end
