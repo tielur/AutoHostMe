@@ -20,6 +20,7 @@ defmodule AutoHostMe.MixProject do
 
   defp deps do
     [
+      {:exirc, "~> 1.0"}
     ]
   end
 end
