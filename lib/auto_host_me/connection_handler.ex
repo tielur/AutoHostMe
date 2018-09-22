@@ -4,7 +4,7 @@ defmodule AutoHostMe.ConnectionHandler do
   """
   alias AutoHostMe.State
 
-  def start_link(client, state \\ %State{}) do
+  def start_link(client, state \\ State.new()) do
     GenServer.start_link(__MODULE__, [%{state | client: client}])
   end
 
