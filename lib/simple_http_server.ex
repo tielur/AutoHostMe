@@ -1,12 +1,8 @@
 defmodule SimpleHttpServer do
-  def init(options) do
-    IO.puts "initializing plug"
-    options
-  end
+  use Plug.Builder
+  plug Plug.Logger
 
   def call(conn, options) do
-    IO.puts "calling plug"
-
     conn
     |> Plug.Conn.send_resp(200, "I'm running!")
   end
