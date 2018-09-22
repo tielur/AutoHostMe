@@ -4,16 +4,22 @@ defmodule AutoHostMe.Application do
   @moduledoc false
 
   use Application
+  import Supervisor.Spec
+
+  alias AutoHostMe.{
+    ConnectionHandler,
+    LoginHandler
+  }
 
   def start(_type, _args) do
-    # List all child processes to be supervised
+    {:ok, client} = ExIrc.start_link!()
+    twitch_channels = String.split(System.get_env("TWITCH_CHANNELS"),",")
+
     children = [
-      # Starts a worker by calling: AutoHostMe.Worker.start_link(arg)
-      # {AutoHostMe.Worker, arg},
+      worker(ConnectionHandler, [client]),
+      worker(LoginHandler, [client, twitch_channels])
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: AutoHostMe.Supervisor]
     Supervisor.start_link(children, opts)
   end
