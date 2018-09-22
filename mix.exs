@@ -20,7 +20,8 @@ defmodule AutoHostMe.MixProject do
 
   defp deps do
     [
-      {:exirc, "~> 1.0"}
+      {:exirc, "~> 1.0"},
+      {:credo, "~> 0.10.1", only: [:dev, :test]}
     ]
   end
 end

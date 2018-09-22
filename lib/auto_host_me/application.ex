@@ -13,7 +13,7 @@ defmodule AutoHostMe.Application do
 
   def start(_type, _args) do
     {:ok, client} = ExIrc.start_link!()
-    twitch_channels = String.split(System.get_env("TWITCH_CHANNELS"),",")
+    twitch_channels = String.split(System.get_env("TWITCH_CHANNELS"), ",")
 
     children = [
       worker(ConnectionHandler, [client]),

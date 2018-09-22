@@ -1,13 +1,8 @@
 defmodule AutoHostMe.ConnectionHandler do
-  defmodule State do
-    defstruct host: "irc.twitch.tv",
-              port: 6667,
-              pass: System.get_env("TWITCH_OAUTH_TOKEN"),
-              nick: System.get_env("TWITCH_USER"),
-              user: System.get_env("TWITCH_USER"),
-              name: System.get_env("TWITCH_USER"),
-              client: nil
-  end
+  @moduledoc """
+  Connection handler that will handle any messages coming from irc server
+  """
+  alias AutoHostMe.State
 
   def start_link(client, state \\ %State{}) do
     GenServer.start_link(__MODULE__, [%{state | client: client}])
@@ -43,7 +38,9 @@ defmodule AutoHostMe.ConnectionHandler do
       true ->
         debug("MATCHES, SENDING ?HOSTME")
         ExIrc.Client.msg(state.client, :privmsg, channel, "?hostme")
-      false -> :nothing_to_do
+
+      false ->
+        :nothing_to_do
     end
 
     {:noreply, state}

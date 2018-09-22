@@ -17,7 +17,7 @@ defmodule AutoHostMe.LoginHandler do
 
   def handle_info(:logged_in, state = {client, channels}) do
     debug("Logged in to server")
-    channels |> Enum.map(&ExIrc.Client.join(client, &1))
+    channels |> Enum.each(&ExIrc.Client.join(client, &1))
     {:noreply, state}
   end
 
