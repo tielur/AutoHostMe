@@ -17,7 +17,11 @@ defmodule AutoHostMe.Application do
     port = Application.fetch_env!(:auto_host_me, :port)
 
     children = [
-      Plug.Adapters.Cowboy.child_spec(scheme: :http, plug: SimpleHttpServer, options: [port: port]),
+      Plug.Adapters.Cowboy.child_spec(
+        scheme: :http,
+        plug: SimpleHttpServer,
+        options: [port: port]
+      ),
       worker(ConnectionHandler, [client]),
       worker(LoginHandler, [client, twitch_channels]),
       worker(Periodically, [])

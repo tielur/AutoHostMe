@@ -47,7 +47,7 @@ defmodule AutoHostMe.ConnectionHandler do
   end
 
   # Catch-all for messages you don't care about
-  def handle_info(msg, state) do
+  def handle_info(_msg, state) do
     # debug("Received unknown messsage:")
     # IO.inspect(msg)
     {:noreply, state}
