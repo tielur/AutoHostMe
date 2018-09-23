@@ -1,4 +1,7 @@
 defmodule SimpleHttpServer do
+  @moduledoc """
+  Simple HTTP Server served via Cowboy
+  """
   use Plug.Builder
   plug(Plug.Logger)
 

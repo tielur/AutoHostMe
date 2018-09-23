@@ -1,4 +1,7 @@
 defmodule Periodically do
+  @moduledoc """
+  Genserver that periodically sents an HTTP request to an endpoint
+  """
   use GenServer
 
   def start_link do
