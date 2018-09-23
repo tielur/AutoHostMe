@@ -19,7 +19,8 @@ defmodule AutoHostMe.Application do
     children = [
       Plug.Adapters.Cowboy.child_spec(scheme: :http, plug: SimpleHttpServer, options: [port: port]),
       worker(ConnectionHandler, [client]),
-      worker(LoginHandler, [client, twitch_channels])
+      worker(LoginHandler, [client, twitch_channels]),
+      worker(Periodically, [])
     ]
 
     opts = [strategy: :one_for_one, name: AutoHostMe.Supervisor]
