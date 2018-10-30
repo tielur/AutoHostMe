@@ -23,7 +23,9 @@ defmodule AutoHostMe.MixProject do
       {:exirc, "~> 1.0"},
       {:cowboy, "~> 1.0"},
       {:plug, "~> 1.6"},
-      {:credo, "~> 0.10.1", only: [:dev, :test]}
+      {:credo, "~> 0.10.1", only: [:dev, :test]},
+      {:httpoison, "~> 1.4"},
+      {:jason, "~> 1.1"}
     ]
   end
 end

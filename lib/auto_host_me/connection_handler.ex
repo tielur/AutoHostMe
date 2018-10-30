@@ -29,8 +29,6 @@ defmodule AutoHostMe.ConnectionHandler do
          }, channel},
         state
       ) do
-
-      end
     sub_message = "It's your turn"
 
     msg

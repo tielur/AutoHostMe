@@ -16,7 +16,7 @@ defmodule AutoHostMe.State do
     %State{
       host: "irc.twitch.tv",
       port: 6667,
-      pass: System.get_env("TWITCH_OAUTH_TOKEN"),
+      pass: "oauth:#{System.get_env("TWITCH_OAUTH_TOKEN")}",
       nick: System.get_env("TWITCH_USER"),
       user: System.get_env("TWITCH_USER"),
       name: System.get_env("TWITCH_USER"),
