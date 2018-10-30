@@ -41,7 +41,7 @@ defmodule SimpleHttpServer do
   def subscribe_to_switch_websocket do
     url = "https://api.twitch.tv/helix/webhooks/hub"
     body = %{
-      "hub.callback" => System.get_env("TWITCH_WEBHOOK_CALLBACK_URL"),
+      "hub.callback" => "#{System.get_env("TWITCH_WEBHOOK_CALLBACK_URL")}/twitch_notifications",
       "hub.mode" => "subscribe",
       "hub.topic" => "https://api.twitch.tv/helix/streams?user_id=41579707",
       "hub.lease_seconds" => 2400, #2400 (40mins)

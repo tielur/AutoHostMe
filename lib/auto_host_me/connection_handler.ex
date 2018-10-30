@@ -21,7 +21,7 @@ defmodule AutoHostMe.ConnectionHandler do
   end
 
   def handle_info(
-        {:received, msg,
+        {:me, msg,
          %ExIrc.SenderInfo{
            host: "p0sitivitybot.tmi.twitch.tv",
            nick: "p0sitivitybot",
