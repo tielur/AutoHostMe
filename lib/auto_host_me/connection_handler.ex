@@ -21,7 +21,7 @@ defmodule AutoHostMe.ConnectionHandler do
   end
 
   def handle_info(
-        {:me, msg,
+        {:received, msg,
          %ExIrc.SenderInfo{
            host: "p0sitivitybot.tmi.twitch.tv",
            nick: "p0sitivitybot",
@@ -29,7 +29,9 @@ defmodule AutoHostMe.ConnectionHandler do
          }, channel},
         state
       ) do
-    sub_message = "the raffle list is now reset"
+
+      end
+    sub_message = "It's your turn"
 
     msg
     |> String.downcase()
