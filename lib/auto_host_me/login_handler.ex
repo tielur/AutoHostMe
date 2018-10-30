@@ -18,8 +18,11 @@ defmodule AutoHostMe.LoginHandler do
   def handle_info(:logged_in, state = {client, channels}) do
     debug("Logged in to server")
     channels |> Enum.each(&ExIrc.Client.join(client, &1))
-    debug("Sent first msg")
-    ExIrc.Client.msg(client, :privmsg, hd(channels), "?hostme")
+    # debug("Sent first msg")
+    # for channel <- channels do
+    #   ExIrc.Client.msg(client, :privmsg, channel, "?hostme")
+    # end
+    SimpleHttpServer.subscribe_to_switch_websocket()
     {:noreply, state}
   end
 
