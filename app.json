@@ -1,0 +1,32 @@
+{
+  "name": "AutoHostMe",
+  "scripts": {
+  },
+  "env": {
+    "TWITCH_CHANNELS": {
+      "required": true
+    },
+    "TWITCH_OAUTH_TOKEN": {
+      "required": true
+    },
+    "TWITCH_USER": {
+      "required": true
+    },
+    "TWITCH_WEBHOOK_CALLBACK_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/HashNuke/heroku-buildpack-elixir"
+    }
+  ]
+}
